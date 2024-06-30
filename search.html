@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>검색</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 90%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: #fff;
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #ccc;
+        }
+        .header-icons {
+            display: flex;
+            justify-content: flex-end; /* 오른쪽으로 정렬 */
+            align-items: center;
+        }
+        header h1 {
+            margin: 0;
+            display: flex;
+            align-items: center;
+            
+        }
+
+        header h1 a {
+            text-decoration: none;
+            color: #333;
+            font-size: 24px;
+            font-family: 'Great Vibes', sans-serif;
+        }
+
+        header img {
+            height: 50px;
+            margin-right: 0px;
+    
+        }
+        .icon-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            margin: 0 10px;
+        }
+
+        .icon-button img {
+            width: 30px;
+            height: 30px;
+        }
+
+        .icon-button a {
+            text-decoration: none; /* 링크 밑줄 제거 */
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin-right: 30px;
+        }
+
+        nav ul li a {
+            color: #3a3939;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .search-container {
+            margin: 50px 0;
+            text-align: center;
+        }
+
+        .search-container input[type="text"] {
+            width: 70%;
+            padding: 10px;
+            font-size: 18px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .search-container button {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #FF6347;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .search-container button:hover {
+            background-color: #FF4500;
+        }
+
+        .search-results {
+            margin-top: 30px;
+        }
+
+        .search-results h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .search-results ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .search-results ul li {
+            background-color: #fff;
+            margin: 10px 0;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-results ul li h3 {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        .search-results ul li p {
+            margin: 5px 0 0;
+            font-size: 16px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>
+                <a href="testing.html">
+                    <img src="로고.png" alt="로고">
+                    MONOPOLY COFFEE JOURNEY
+                </a>
+            </h1>
+            <nav>
+                <ul>
+                    <li><a href="products.html">제품</a></li>
+                    <li><a href="sample-request.html">샘플 신청</a></li>
+                    <li><a href="#">고객 지원</a></li>
+                    <li><a href="#">사이트 소개</a></li>
+                </ul>
+                <div class="header-icons">
+                    <a href="search.html" class="icon-button"><img src="검색.png" alt="검색"></a>
+                    <a href="cart.html" class="icon-button"><img src="장바구니.png" alt="장바구니"></a>
+                    <a href="login.html" class="icon-button"><img src="로그인.png" alt="로그인"></a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="검색어를 입력하세요...">
+            <button onclick="search()">검색</button>
+        </div>
+
+        <div class="search-results" id="search-results">
+            <h2>검색 결과</h2>
+            <ul id="results-list">
+              
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function search() {
+            const query = document.getElementById('search-input').value;
+            const resultsList = document.getElementById('results-list');
+
+            
+            resultsList.innerHTML = ''; // 기존 검색 결과 초기화
+            const results = [
+                { title: '인도네시아 자바 원두', description: '부드럽고 깊은 맛의 원두' },
+                { title: '콜롬비아 수프리모 원두', description: '풍부하고 진한 향의 원두' },
+                { title: '에티오피아 예가체프 원두', description: '화려한 꽃향기의 원두' },
+                { title: '이탈리아 더블스타 원두', description: '진한 에스프레소의 원두' }
+            ];
+
+            results.forEach(result => {
+                const li = document.createElement('li');
+                const h3 = document.createElement('h3');
+                h3.textContent = result.title;
+                const p = document.createElement('p');
+                p.textContent = result.description;
+                li.appendChild(h3);
+                li.appendChild(p);
+                resultsList.appendChild(li);
+            });
+        }
+    </script>
+</body>
+</html>
